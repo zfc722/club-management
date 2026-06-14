@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>编辑社团</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+  <h3 class="mt-4" th:text="${club != null} ? '编辑社团' : '新增社团'"></h3>
+  <form method="post" action="/clubs/save">
+    <input type="hidden" name="id" th:value="${club != null ? club.id : ''}" />
+    <div class="mb-3">
+      <label>名称</label>
+      <input class="form-control" name="name" th:value="${club != null ? club.name : ''}" required/>
+    </div>
+    <div class="mb-3">
+      <label>分类</label>
+      <input class="form-control" name="category" th:value="${club != null ? club.category : ''}" />
+    </div>
+    <div class="mb-3">
+      <label>会长</label>
+      <input class="form-control" name="president" th:value="${club != null ? club.president : ''}" />
+    </div>
+    <div class="mb-3">
+      <label>联系方式</label>
+      <input class="form-control" name="contact" th:value="${club != null ? club.contact : ''}" />
+    </div>
+    <div class="mb-3">
+      <label>描述</label>
+      <textarea class="form-control" name="description" rows="4" th:text="${club != null ? club.description : ''}"></textarea>
+    </div>
+    <button class="btn btn-primary">保存</button>
+    <a class="btn btn-secondary" href="/clubs">取消</a>
+  </form>
+</div>
+</body>
+</html>
